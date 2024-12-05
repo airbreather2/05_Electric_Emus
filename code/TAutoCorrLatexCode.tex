@@ -1,0 +1,30 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{setspace}
+\geometry{top=0.5in, bottom=0.5in, left=0.5in, right=0.5in}
+\setstretch{1} 
+\title{\textbf{Analysis of Annual Temperature AutoCorrelations Using Permutation Testing}}
+\author{Laiyin Zhou, Yaxin Liu, Sebastian Dohne, and Yangfeng Wang}
+\date{04/12/2024}
+\begin{document}
+
+\maketitle
+\section*{Introduction}
+This study investigates whether there is a significant correlation between consecutive years' annual mean temperatures in Key West. To achieve this, we computed the observed correlation coefficient and used a permutation test to assess its statistical significance.The data consists of annual mean temperatures. The observed correlation coefficient was calculated between the temperatures of year \( t \) and year \( t+1 \). To test the null hypothesis that the observed correlation is due to random chance, a permutation test was conducted. The temperature data was randomly shuffled 10,000 times, and a correlation coefficient was calculated for each permutation. The p-value was estimated as the proportion of permuted correlations greater than or equal to the observed correlation.
+\section*{Results}
+The observed correlation coefficient was: 0.649.
+The approximate p-value from the permutation test was: 0.0006.
+This indicates that the observed correlation is highly statistically significant. Figure \ref{fig:histogram} shows the distribution of permuted correlation coefficients, with the observed correlation marked as a red dashed line.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth, height=0.3\textheight]{../results/Coefficients.pdf}
+    \caption{Histogram of correlation coefficients from 10,000 permutations. The red dashed line represents the observed correlation.}
+    \label{fig:histogram}
+\end{figure}
+\section*{Conclusion}
+The observed correlation coefficient suggests a moderate positive relationship between consecutive years' temperatures in Key West. The extremely low p-value (\(< 0.001\)) strongly rejects the null hypothesis, indicating that the correlation is not due to random chance. This result may reflect underlying climatic patterns or environmental inertia.
+\immediate\write18{mv TAutoCorrLatexCode.pdf ../results/}
+\end{document}
