@@ -7,10 +7,9 @@
 This repository contains these main groupwork practicals:
 1. **Align DNA Sequences**
 2. **Missing Oaks Problem**
-3. **Visulalising regression**
-4. **Visuaising regression groupwork**
-5. **KeyWestAnnualMeanTemperature.R**
-6. **TAutoCorrLatexCode.tex**
+3. **Visuaising regression groupwork**
+4. **KeyWestAnnualMeanTemperature.R**
+5. **TAutoCorrLatexCode.tex**
 ---
 
 ## align_seqs_better.py
@@ -90,37 +89,6 @@ This repository contains these main groupwork practicals:
   - Ensure that `TestOaksData.csv` is available in the specified input directory (`../data`) before running the script.
   - This script omits headers in the output file by design, only including oak entries.
   
-
-### PP_Regress.R
-
-- **Description**:  
-  This script generates multiple plots containing linear regressions of predator and prey masses grouped by predator lifestage and feeding type from the EcolArchives-E089-51-D1 dataset. It also calculates regression coefficients for each group and saves them to a CSV file.
-
-  - **Functions**:
-    - The script does not define reusable functions but performs the following tasks:
-      - Creates a combined dataset with log-transformed predator and prey masses.
-      - Identifies groups with insufficient data for regression.
-      - Generates regression plots faceted by feeding interaction type.
-      - Saves regression results to a CSV file.
-
-  - **Arguments**:  
-    This script does not require any arguments when running.
-
-- **Dependencies**:  
-  - `ggplot2`: For data visualization.
-  - `dplyr`: For data manipulation.
-  - `broom`: For organizing regression results.
-  - `purrr`: For functional programming operations.
-
-- **Usage**:  
-  1. To run the script, use the following command in a terminal:
-     ```bash
-     Rscript PP_Regress.R
-     ```
-  - The script will:
-    - Load the dataset and preprocess it.
-    - Generate a PDF file with regression plots (`test_Visualising_regression_analysis.pdf`).
-    - Save a CSV file containing regression coefficients (`PP_Regress_Results.csv`).
 
 ### PP_Regress_loc.R
 
