@@ -1,13 +1,16 @@
 # CMEE Coursework Groupwork Practicals - Python Week 2
 
 - **Authors**: Laiyin Zhou, Yaxin Liu, Sebastian Dohne, and Yangfeng Wang
-- **Language**: Python
+- **Languages**: Python, R, Latex
 
 ## Groupwork Practicals
-This repository contains two main groupwork practicals:
+This repository contains these main groupwork practicals:
 1. **Align DNA Sequences**
 2. **Missing Oaks Problem**
-
+3. **Visulalising regression**
+4. **Visuaising regression groupwork**
+5. **KeyWestAnnualMeanTemperature.R**
+6. **TAutoCorrLatexCode.tex**
 ---
 
 ## align_seqs_better.py
@@ -86,3 +89,110 @@ This repository contains two main groupwork practicals:
   - The script will create the `../results` directory if it does not already exist.
   - Ensure that `TestOaksData.csv` is available in the specified input directory (`../data`) before running the script.
   - This script omits headers in the output file by design, only including oak entries.
+  
+
+### PP_Regress.R
+
+- **Description**:  
+  This script generates multiple plots containing linear regressions of predator and prey masses grouped by predator lifestage and feeding type from the EcolArchives-E089-51-D1 dataset. It also calculates regression coefficients for each group and saves them to a CSV file.
+
+  - **Functions**:
+    - The script does not define reusable functions but performs the following tasks:
+      - Creates a combined dataset with log-transformed predator and prey masses.
+      - Identifies groups with insufficient data for regression.
+      - Generates regression plots faceted by feeding interaction type.
+      - Saves regression results to a CSV file.
+
+  - **Arguments**:  
+    This script does not require any arguments when running.
+
+- **Dependencies**:  
+  - `ggplot2`: For data visualization.
+  - `dplyr`: For data manipulation.
+  - `broom`: For organizing regression results.
+  - `purrr`: For functional programming operations.
+
+- **Usage**:  
+  1. To run the script, use the following command in a terminal:
+     ```bash
+     Rscript PP_Regress.R
+     ```
+  - The script will:
+    - Load the dataset and preprocess it.
+    - Generate a PDF file with regression plots (`test_Visualising_regression_analysis.pdf`).
+    - Save a CSV file containing regression coefficients (`PP_Regress_Results.csv`).
+
+### PP_Regress_loc.R
+
+- **Description**:  
+  This script generates multiple plots containing linear regressions of predator and prey masses grouped by predator lifestage and feeding type by location from the EcolArchives-E089-51-D1 dataset. It also calculates regression coefficients for each group and saves them to a CSV file.
+
+  - **Functions**:
+    - The script does not define reusable functions but performs the following tasks:
+      - Creates a combined dataset with log-transformed predator and prey masses.
+      - Identifies groups with insufficient data for regression.
+      - Generates regression plots faceted by feeding interaction type.
+      - Saves regression results to a CSV file.
+
+  - **Arguments**:  
+    This script does not require any arguments when running.
+
+- **Dependencies**:  
+  - `ggplot2`: For data visualization.
+  - `dplyr`: For data manipulation.
+  - `broom`: For organizing regression results.
+  - `purrr`: For functional programming operations.
+
+- **Usage**:  
+  - To run the script, use the following command in a terminal:
+     ```bash
+     Rscript PP_Regress_loc.R
+     ```
+  - The script will:
+    - Load the dataset and preprocess it.
+    - Generate a PDF file with regression plots (`test_Visualising_regression_analysis.pdf`).
+    - Save a CSV file containing regression coefficients (`PP_Regress_bylocation_Results.csv`).
+      
+### KeyWestAnnualMeanTemperature.R
+
+- **Description**:  
+This script evaluates the correlation between consecutive years' annual mean temperatures in Key West using a permutation test. It computes the observed correlation coefficient, generates a null distribution, and calculates an approximate p-value. The results are visualized in a histogram saved as a PDF.
+
+- **Dependencies**:
+  - base (core R functions like cor and sample)
+  - graphics (for plotting)
+
+- **Usage**:
+  - Run the script with:
+  ```bash
+  Rscript KeyWestAnnualMeanTemperature.R
+  ```
+
+  - The script will:
+    - Load the dataset KeyWestAnnualMeanTemperature.RData.
+    - Compute the observed correlation coefficient.
+    - Perform a permutation test with 10,000 iterations.
+    - Save a histogram of correlation coefficients to ../results/Coefficients.pdf.
+
+## TAutoCorrLatexCode.tex
+
+- **Description**:
+This LaTeX document generates a report analyzing the correlation between annual mean temperatures in Key West.
+
+- **Dependencies**:
+  - LaTeX distribution: Ensure you have a LaTeX compiler such as pdflatex, xelatex, or lualatex installed.
+  - Packages:
+    - 'geometry':for setting page margins
+    - 'setspace':for controlling line spacing
+    - 'graphicx':for inserting images
+    - 'amsmath' :for mathematical expressions
+
+- **Usage**:
+To compile the LaTeX file and generate a PDF
+  - Input:
+    - The script references the histogram plot Coefficients.pdf located in the ../results directory. Ensure this file exists (run "KeyWestAnnualMeanTemperature.R" first) before compiling the LaTeX document.
+  - Output:
+    - If you want the output PDF to be saved in a specific directory (e.g., ../results), compile with the following command in terminal:
+   ```bash
+   pdflatex -output-directory=../results TAutoCorrLatexCode.tex
+   ```

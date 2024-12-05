@@ -6,7 +6,7 @@ belonging to the Quercus genus (oak trees), and writes them to a new CSV file.
 It reads from an input file, processes the data, and saves the results to an output file.
 Additionally, it includes a function with built-in tests using doctest.
 
-Author: Sebastian Dohne (sed24@ic.ac.uk)
+Author: 'Laiyin Zhou (l.zhou24@imperial.ac.uk), Sebatian Dohne (sebastian.dohne24@imperial.ac.uk), Yanfeng Wang (yanfeng.wang24@imperial.ac.uk), Yaxin Liu (yaxin.liu24@imperial.ac.uk)'
 Version: 0.0.1
 License: License for this code/program
 """
