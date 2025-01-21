@@ -1,0 +1,1033 @@
+Starting testing for Electric Emus
+
+Note that: 
+(1) Major sections begin with a double "====" line 
+(2) Subsections begin with a single "====" line 
+(3) Code output or text file content are printed within single "*****" lines 
+
+======================================================================
+======================================================================
+Your current Git repo size is about 1.75 MiB on disk 
+
+PART 1: Checking project workflow...
+
+Found the following directories in root directory of repo: results, data, .git, Feedback, code
+
+Found the following files in root directory of repo: .gitignore, README.md
+
+Checking for key files in parent directory...
+
+Found .gitignore in parent directory, great! 
+
+Printing contents of .gitignore:
+
+**********************************************************************
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.fls
+*.fcb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.gz 
+
+results/*
+!results/.gitkeep
+ 
+**********************************************************************
+
+Found README in parent directory, named: README.md
+
+Printing contents of README.md:
+
+**********************************************************************
+# CMEE Coursework Groupwork Practicals - Python Week 2
+
+- **Authors**: Laiyin Zhou, Yaxin Liu, Sebastian Dohne, and Yangfeng Wang
+- **Languages**: Python, R, Latex
+
+## Groupwork Practicals
+This repository contains these main groupwork practicals:
+1. **Align DNA Sequences**
+2. **Missing Oaks Problem**
+3. **Visuaising regression groupwork**
+4. **KeyWestAnnualMeanTemperature.R**
+5. **TAutoCorrLatexCode.tex**
+---
+
+## align_seqs_better.py
+
+- **Description**:  
+  A Python script that reads two DNA sequences from FASTA files, aligns them using a custom scoring function, and identifies the best-scoring alignments. The results are displayed in the console and saved in a text file.
+
+- **Features**:
+  - Reads DNA sequences from FASTA files.
+  - Calculates alignment scores.
+  - Displays best alignments.
+  - Saves best alignments in a binary file.
+
+- **Modules Used**:
+  - **ipdb**: Debugging tool.
+  - **os**: Handles file path manipulation and directory creation.
+  - **sys**: Accesses command-line arguments and system parameters.
+  - **csv**: Reads from and writes to CSV files.
+
+- **Installation**:
+  1. Clone the repository:
+     ```bash
+     git clone <repository-url>
+     ```
+  2. Navigate to the project directory:
+     ```bash
+     cd /path/to/your/project
+     ```
+  3. Install dependencies if required (optional):
+     ```bash
+     pip install -r requirements.txt
+     ```
+
+- **Usage**:
+  - Specify FASTA files via command line, or use defaults from `../data/`.
+  - **Command-line Usage**:
+     ```bash
+     python3 align_seqs_better.py <fasta_file_1> <fasta_file_2>
+     ```
+
+---
+
+## Missing_oaks_problem.py
+
+- **Description**:  
+  This Python script identifies rows where the genus is 'Quercus' (oak) in a CSV dataset and saves these rows to a new output file. It reads from an input CSV, checks each row for the genus, and writes matching rows to an output CSV without the header.
+
+- **Script Information**:
+  - **Script Name**: `Missing_oaks_problem.py`
+  - **Authors**: Yaxin Liu (yaxin.liu24@imperial.ac.uk), Laiyin Zhou (l.zhou24@imperial.ac.uk), Sebastian Dohne (sebastian.dohne24@imperial.ac.uk), Yanfeng Wang (yanfeng.wang24@imperial.ac.uk)
+  - **Version**: 0.0.1
+
+- **Functions and Workflow**:
+  - **Read Input**: Reads the input CSV file `TestOaksData.csv` from the `../data` directory.
+  - **Filter for Oaks**: Processes each row, checking if the genus is 'Quercus'. Matching rows are added to a list called `oaks`.
+  - **Write Output**: Writes each oak entry to an output file `oaks.csv` located in the `../results` directory.
+
+- **Arguments**:  
+  No command-line arguments are required.
+
+- **Dependencies**:  
+  Requires Python 3 and uses standard libraries:
+  - `csv`: To read and write CSV files.
+  - `os`: To ensure output directories exist.
+
+- **Usage**:  
+  - Run the script using:
+     ```bash
+     python3 missing_oaks.py
+     ```
+  - The script will:
+    - Read and filter oak entries from `../data/TestOaksData.csv`.
+    - Write the filtered entries to `../results/oaks.csv`.
+
+- **Additional Notes**:  
+  - The script will create the `../results` directory if it does not already exist.
+  - Ensure that `TestOaksData.csv` is available in the specified input directory (`../data`) before running the script.
+  - This script omits headers in the output file by design, only including oak entries.
+  
+
+### PP_Regress_loc.R
+
+- **Description**:  
+  This script generates multiple plots containing linear regressions of predator and prey masses grouped by predator lifestage and feeding type by location from the EcolArchives-E089-51-D1 dataset. It also calculates regression coefficients for each group and saves them to a CSV file.
+
+  - **Functions**:
+    - The script does not define reusable functions but performs the following tasks:
+      - Creates a combined dataset with log-transformed predator and prey masses.
+      - Identifies groups with insufficient data for regression.
+      - Generates regression plots faceted by feeding interaction type.
+      - Saves regression results to a CSV file.
+
+  - **Arguments**:  
+    This script does not require any arguments when running.
+
+- **Dependencies**:  
+  - `ggplot2`: For data visualization.
+  - `dplyr`: For data manipulation.
+  - `broom`: For organizing regression results.
+  - `purrr`: For functional programming operations.
+
+- **Usage**:  
+  - To run the script, use the following command in a terminal:
+     ```bash
+     Rscript PP_Regress_loc.R
+     ```
+  - The script will:
+    - Load the dataset and preprocess it.
+    - Generate a PDF file with regression plots (`test_Visualising_regression_analysis.pdf`).
+    - Save a CSV file containing regression coefficients (`PP_Regress_bylocation_Results.csv`).
+      
+### KeyWestAnnualMeanTemperature.R
+
+- **Description**:  
+This script evaluates the correlation between consecutive years' annual mean temperatures in Key West using a permutation test. It computes the observed correlation coefficient, generates a null distribution, and calculates an approximate p-value. The results are visualized in a histogram saved as a PDF.
+
+- **Dependencies**:
+  - base (core R functions like cor and sample)
+  - graphics (for plotting)
+
+- **Usage**:
+  - Run the script with:
+  ```bash
+  Rscript KeyWestAnnualMeanTemperature.R
+  ```
+
+  - The script will:
+    - Load the dataset KeyWestAnnualMeanTemperature.RData.
+    - Compute the observed correlation coefficient.
+    - Perform a permutation test with 10,000 iterations.
+    - Save a histogram of correlation coefficients to ../results/Coefficients.pdf.
+
+## TAutoCorrLatexCode.tex
+
+- **Description**:
+This LaTeX document generates a report analyzing the correlation between annual mean temperatures in Key West.
+
+- **Dependencies**:
+  - LaTeX distribution: Ensure you have a LaTeX compiler such as pdflatex, xelatex, or lualatex installed.
+  - Packages:
+    - 'geometry':for setting page margins
+    - 'setspace':for controlling line spacing
+    - 'graphicx':for inserting images
+    - 'amsmath' :for mathematical expressions
+
+- **Usage**:
+To compile the LaTeX file and generate a PDF
+  - Input:
+    - The script references the histogram plot Coefficients.pdf located in the ../results directory. Ensure this file exists (run "KeyWestAnnualMeanTemperature.R" first) before compiling the LaTeX document.
+  - Output:
+    - If you want the output PDF to be saved in a specific directory (e.g., ../results), compile with the following command in terminal:
+   ```bash
+   pdflatex -output-directory=../results TAutoCorrLatexCode.tex
+   ```
+
+**********************************************************************
+
+======================================================================
+======================================================================
+PART 2: Checking code and workflow...
+
+======================================================================
+Found following files in results directory: JustOaksData.csv, Best-alignment-Results.txt, Coefficients.pdf, PP_Regress_bylocation_Results.csv...
+
+Ideally, Results directory should be empty other than, perhaps a .gitkeep. 
+
+Found 5 code files: PP_Regress_loc.R, TAutoCorr.R, align_seqs_better.py, TAutoCorrLatexCode.tex, Groupwork_oaks_debugme.py
+
+Found the following extra (non-code/script) files: Rplots.pdf
+======================================================================
+Testing script/code files...
+
+======================================================================
+Inspecting script file PP_Regress_loc.R...
+
+File contents are:
+
+**********************************************************************
+#!/usr/bin/env Rscript
+# Author: 'Laiyin Zhou (l.zhou24@imperial.ac.uk), Sebatian Dohne (sebastian.dohne24@imperial.ac.uk), Yanfeng Wang (yanfeng.wang24@imperial.ac.uk), Yaxin Liu (yaxin.liu24@imperial.ac.uk)'
+# Script: PP_Regress.R.
+# Description: This code generates multiple plots containing linear regressions of the masses between predator and prey by lifestage and feeding type by location. then finding the coefficients for the linear regressions and saving these to a dataframe  
+# Arguments: None
+# Date: Nov 2024
+# dependencies: ggplot2, dpylr, broom, purrr
+# Usage:
+# 
+# 
+# To run the script:
+# Rscript PP_Regress_loc.R
+#
+# No arguments are required for running this script.
+
+library(ggplot2) 
+library(dplyr)
+library(broom)
+library(purrr)
+
+rm(list=ls())
+
+#setting seed for repeatability
+set.seed(12345)
+
+#read data in
+data <- read.csv("../data/EcolArchives-E089-51-D1.csv")
+
+# Combine all feeding types into one dataset and log transform predator and prey mass
+data_combined <- data %>%
+  mutate(
+    LogPreyMass = log10(Prey.mass),
+    LogPredatorMass = log10(Predator.mass)
+  )
+
+# find which groups have fewer than 3 points, these will show up as NA when calculating lm coefficients  
+data_combined %>%
+  group_by(Type.of.feeding.interaction, Predator.lifestage) %>%
+  summarize(count = n())
+
+####Performing the Linear Regression coefficient dataframe 
+
+LM <- data_combined %>%
+  # Select only relevant columns for analysis
+  dplyr::select(Record.number, Predator.mass, Prey.mass, Predator.lifestage, Type.of.feeding.interaction, Location) %>%
+  
+  # Group data by feeding interaction type and predator life stage
+  group_by(Type.of.feeding.interaction, Predator.lifestage, Location) %>%
+  
+  # Filter out groups with only one record (insufficient for regression)
+  filter(n() > 1) %>%
+  
+  # Filter out groups with zero variance in Prey.mass (no meaningful regression possible)
+  filter(sd(Prey.mass) > 0) %>%
+  
+  # Fit a linear model for each group (Predator.mass ~ Prey.mass)
+  do(mod = lm(Predator.mass ~ Prey.mass, data = .)) %>%
+  
+  # Extract regression results (slope, intercept, R-squared, F-statistic, P-value)
+  mutate(
+    Regression.slope = summary(mod)$coefficients[2, 1],
+    Regression.intercept = summary(mod)$coefficients[1, 1],
+    R.squared = summary(mod)$adj.r.squared,
+    Fstatistic = summary(mod)$fstatistic[1],
+    P.value = summary(mod)$coefficients[2, 4]
+  ) %>%
+  
+  # Remove the model object column to simplify the final output
+  dplyr::select(-mod)
+
+
+#save linear model coefficients output by location
+write.csv(LM, "../results/PP_Regress_bylocation_Results.csv", row.names = FALSE)
+
+
+####### TO DO LIST: 
+**********************************************************************
+
+Testing PP_Regress_loc.R...
+
+Output (only first 500 characters): 
+
+
+**********************************************************************
+# A tibble: 18 × 3
+# Groups:   Type.of.feeding.interaction [5]
+   Type.of.feeding.interaction Predator.lifestage count
+   <chr>                       <chr>              <int>
+ 1 insectivorous               larva / juvenile      32
+ 2 piscivorous                 adult              17700
+ 3 piscivorous                 juvenile            3029
+ 4 piscivorous                 larva / juvenile      11
+ 5 piscivorous                 postlarva             33
+ 6 piscivorous                 postlarva/juven
+**********************************************************************
+
+Encountered error (or warning):
+
+***IGNORE IF THIS ERROR IS EXPECTED AS PART OF AN IN-CLASS EXERCISE***
+
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+`summarise()` has grouped output by 'Type.of.feeding.interaction'. You can
+override using the `.groups` argument.
+Warning message:
+There were 5 warnings in `mutate()`.
+The first warning was:
+ℹ In argument: `Regression.slope = summary(mod)$coefficients[2, 1]`.
+ℹ In row 35.
+Caused by warning in `summary.lm()`:
+! essentially perfect fit: summary may be unreliable
+ℹ Run `dplyr::last_dplyr_warnings()` to see the 4 remaining warnings. 
+
+======================================================================
+Inspecting script file TAutoCorr.R...
+
+File contents are:
+
+**********************************************************************
+#!/usr/bin/env Rscript
+# Author: 'Laiyin Zhou (l.zhou24@imperial.ac.uk), Sebatian Dohne (sebastian.dohne24@imperial.ac.uk), Yanfeng Wang (yanfeng.wang24@imperial.ac.uk), Yaxin Liu (yaxin.liu24@imperial.ac.uk)'
+# Script: TAutoCorr.R.
+# Description: This script evaluates the correlation between consecutive years' annual mean temperatures in Key West using a permutation test.  
+# Arguments: None
+# Date: Nov 2024
+#dependencies: core R functions like cor and sample; graphics (for plotting)
+
+# Usage:
+# 
+# 
+# To run the script:
+# Rscript TAutoCorr.R
+#
+# No arguments are required for running this script.
+
+# Load and explore data
+
+rm(list=ls())
+
+load("../data/KeyWestAnnualMeanTemperature.RData")
+ls()
+
+class(ats)
+head(ats)
+
+plot(ats)
+
+
+# Calculate the observed correlation coefficient
+observed_cor <- cor(ats$Temp[-1], ats$Temp[-length(ats$Temp)])
+observed_cor
+
+# Perform permutation testing
+set.seed(12345)
+n_permutations <- 10000  # Define the number of permutations
+permuted_cors <- numeric(n_permutations)  # To store correlation coefficients from permutations
+
+for (i in 1:n_permutations) {
+  # Randomly shuffle the temperature values
+  permuted_temps <- sample(ats$Temp) 
+  # Calculate correlation for the permuted time series
+  permuted_cors[i] <- cor(permuted_temps[-1], permuted_temps[-length(permuted_temps)])
+}
+
+# Calculate the approximate p-value
+p_value <- sum(permuted_cors >= observed_cor) / n_permutations
+
+# Display results
+cat("Observed correlation coefficient:", observed_cor, "\n")
+cat("Approximate p-value:", p_value, "\n")
+
+
+# Plot histogram of permuted correlations
+output_dir <- "../results" # Define the results directory
+pdf(file = file.path(output_dir, "Coefficients.pdf"), width = 8, height = 6) # Save the plot as PDF
+
+# Generate the plot
+hist(permuted_cors, breaks = 30, col = "lightblue", main = "",
+     xlab = "Correlation Coefficient")
+abline(v = observed_cor, col = "red", lwd = 2, lty = 2)
+legend("topleft", legend = c("Observed Correlation"), col = "red", lty = 2, lwd = 2)
+text(x = max(permuted_cors) - 0.2, 
+     y = max(hist(permuted_cors, breaks = 30, plot = FALSE)$counts) * 0.8, 
+     labels = expression(italic(p) == "6 × 10"^-4), 
+     pos = 4, cex = 1.2)
+
+dev.off()
+
+**********************************************************************
+
+Testing TAutoCorr.R...
+
+Output (only first 500 characters): 
+
+
+**********************************************************************
+[1] "ats"
+[1] "data.frame"
+  Year     Temp
+1 1901 23.75000
+2 1902 24.66667
+3 1903 24.71667
+4 1904 24.51667
+5 1905 24.88333
+6 1906 24.63333
+[1] 0.3261697
+Observed correlation coefficient: 0.3261697 
+Approximate p-value: 4e-04 
+pdf 
+  2 
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.32189s
+
+======================================================================
+Inspecting script file align_seqs_better.py...
+
+File contents are:
+
+**********************************************************************
+#!/usr/bin/env python3
+
+"""
+Description: This script compares two DNA sequences from a FASTA file, aligns them, and calculates 
+the best alignment based on the number of matching bases. It uses a scoring function to determine
+the best match and saves the alignment result along with the score to a text file.
+
+"""
+
+__appname__ = 'align_seqs_better'
+__author__ = 'Laiyin Zhou (l.zhou24@imperial.ac.uk), Sebatian Dohne (sebastian.dohne24@imperial.ac.uk), Yanfeng Wang (yanfeng.wang24@imperial.ac.uk), Yaxin Liu (yaxin.liu24@imperial.ac.uk)'
+__version__ = '0.0.1'
+
+
+## imports ##
+import sys # module to interface our program with the operating system
+import os  #  to check and create directory if necessary
+
+# Two example sequences to match
+def read_seq(file_path):
+    """
+    Read a DNA sequence from a FASTA file, ignoring the header.
+
+    Args:
+        file_path (str): Path to a FASTA file.
+
+    Returns:
+        str: DNA sequence from the file.
+        
+    Raises:
+        FileNotFoundError: If the file is not found.
+        ValueError: If the file is empty or incorrectly formatted.
+        Exception: For any other unexpected file reading errors.
+    """
+    try:
+        with open(file_path, 'r') as f:
+            next(f)  # skip the heading
+            sequence = f.read().replace('\n', '').strip()  # exclude new line characters
+            if not sequence:  # handle errors if files don't exist or incorrectly formatted
+                raise ValueError(f"File '{file_path}' is empty or incorrectly formatted.")
+        return sequence
+    # handle specific types of file reading errors:
+    except FileNotFoundError:
+        print(f"Error: File '{file_path}' not found.")
+        sys.exit(1)
+    except ValueError as e:
+        print(f"Error: {e}")
+        sys.exit(1)
+    except Exception as e:
+        print(f"An unexpected error occurred while reading '{file_path}': {e}")
+        sys.exit(1)
+
+def read_fasta(file1, file2):
+    """
+    Read sequences from two FASTA files.
+
+    Parameters:
+        file1 (str): Path to the first FASTA file.
+        file2 (str): Path to the second FASTA file.
+
+    Returns:
+        tuple: A tuple containing two DNA sequences (seq1, seq2).
+    """
+    # Check if both filenames end with '.fasta'
+    if not (file1.lower().endswith('.fasta') and file2.lower().endswith('.fasta')):
+        print("Error: Both files must be FASTA files. Please provide valid .fasta files.")
+        return None, None
+        
+    seq1 = read_seq(file1)
+    seq2 = read_seq(file2)
+    return seq1, seq2
+
+# Decide wether files are default (../data/*.fasta) or explicit input (sys.argv)
+file1 = sys.argv[1] if len(sys.argv) >1 else '../data/407228326.fasta'
+file2 = sys.argv[2] if len(sys.argv) > 2 else '../data/407228412.fasta'
+
+seq1, seq2 = read_fasta(file1, file2)
+
+# Assign the longer sequence s1, and the shorter to s2
+# l1 is length of the longest, l2 that of the shortest
+
+l1 = len(seq1)
+l2 = len(seq2)
+if l1 >= l2:
+    s1 = seq1
+    s2 = seq2
+else:
+    s1 = seq2
+    s2 = seq1
+    l1, l2 = l2, l1 # swap the two lengths
+
+
+## functions ##
+# A function that computes a score by returning the number of matches starting
+# from arbitrary startpoint (chosen by user)
+def calculate_score(s1, s2, l1, l2, startpoint):
+    """
+    Computes the alignment score by counting the number of matching bases 
+    between two DNA sequences starting from a specified point.
+
+    Args:
+        s1 (str): The first DNA sequence (the longer sequence).
+        s2 (str): The second DNA sequence (the shorter sequence).
+        l1 (int): The length of the first DNA sequence.
+        l2 (int): The length of the second DNA sequence.
+        startpoint (int): The starting index in the first sequence for the alignment.
+
+    Returns:
+        int: The total score representing the number of matching bases found during the alignment.
+    
+    This function prints a visual representation of the alignment, where 
+    '*' indicates a match and '-' indicates a mismatch.
+    """
+    matched = []  # Use a list instead of concatenating strings to make it run faster
+    score = 0
+    for i in range(l2):
+        if (i + startpoint) < l1:
+            if s1[i + startpoint] == s2[i]:  # if the bases match
+                matched.append("*")
+                score += 1
+            else:
+                matched.append("-")
+
+    # Join list to form the final matched string
+    matched_str = ''.join(matched)
+
+    # some formatted output
+    print("." * startpoint + matched_str)  # Convert list to string before printing
+    print("." * startpoint + s2)
+    print(s1)
+    print(score) 
+    print(" ")
+
+    return score
+
+# Test the function with some example starting points:
+#calculate_score(s1, s2, l1, l2, 0)
+#calculate_score(s1, s2, l1, l2, 1)
+#calculate_score(s1, s2, l1, l2, 5)
+
+# now try to find the best match (highest score) for the two sequences
+
+# Ensure the 'results' directory exists, creating it if necessary
+results_dir = '../results'
+try:
+    os.makedirs(results_dir, exist_ok=True)
+except OSError as e:
+    print(f"Error creating directory '{results_dir}': {e}")
+    exit(1)  # Exit with an error code if directory creation fails
+
+
+def best_match(s1, s2, l1, l2):
+    """
+    Identifies the best alignments (highest scores) between two DNA sequences and saves them to a text file.
+
+    The function compares two DNA sequences (`s1` and `s2`) to find the optimal alignment(s) based on the number 
+    of matching bases. It iterates over possible start points for aligning `s2` with `s1` and calculates a score 
+    for each alignment. The highest score(s) are stored, and all alignments with that highest score are saved 
+    to a text file.
+
+    Args:
+        s1 (str): The first DNA sequence (usually the longer sequence).
+        s2 (str): The second DNA sequence (usually the shorter sequence to be aligned).
+        l1 (int): The length of the first DNA sequence.
+        l2 (int): The length of the second DNA sequence.
+
+    Example Output:
+        Best Alignment(s):
+        ...ATGC
+        AGCTATGC
+        4
+
+        ....ATGC
+        AGCTATGC
+        4
+    """
+    my_best_align = []
+    my_best_score = -1
+
+    for i in range(l1):  # take all the best alignments with the highest score
+        z = calculate_score(s1, s2, l1, l2, i)
+        align = "." * i + s2
+
+        if z > my_best_score:
+            my_best_align = [(align, s1, z)]  # write better alignment into the list
+            my_best_score = z
+        elif z == my_best_score:
+            my_best_align.append((align, s1, z))  # add same best score to list
+
+    # Store the results in a plain text file
+    with open('../results/Best-alignment-Results.txt', 'w') as outfile:
+        outfile.write("Best Alignment(s):\n")  # write headline
+        for align, s1, score in my_best_align:
+            outfile.write(f"{align}\n{s1}\n{score}\n\n")  # write each alignment, sequence, and score
+    print(f"Results saved to {'../results/Best-alignment-Results.txt'}")
+
+    return 0
+
+
+def main(argv):
+    """
+    Main entry point of the program.
+
+    Runs the score calculation from a startpoint of 0 and then searches for the best matches.
+
+    Parameters:
+        argv (list): Command-line arguments.
+    """
+    best_match(s1, s2, l1, l2)
+    return 0
+
+if __name__ == "__main__":
+    """Makes sure the "main" function is called from command line"""
+    status = main(sys.argv)
+    sys.exit(status)
+
+**********************************************************************
+
+Testing align_seqs_better.py...
+
+align_seqs_better.py is a Python script file;
+
+checking for docstrings...
+
+Found one or more docstrings and functions
+
+Output (only first 500 characters): 
+
+
+**********************************************************************
+*-**---*--*---*-------*-*---*-*--*-*-*---*---*-----*--***----*--********-**---**--*---***------*-*--**---*-*---*-----*--****--------*--*--*-------**-*--*-*-----*-***-----**-----*-*-**--*--------*--**---*-**--*---*-**---*-*-*-*--**-*-******------**--*---*------****-*-*----*---*-------*-------------**-*-**--**-*------*-*--------**--*---------**---------*-**-------**-*--*--*--------*------------*-*-*--*-*---*-*-*--*-*----------**--------*-*--*------*-------**-----*--------*-----*--*--*----------*---
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 1.63720s
+
+======================================================================
+Inspecting script file TAutoCorrLatexCode.tex...
+
+File contents are:
+
+**********************************************************************
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{setspace}
+\geometry{top=0.5in, bottom=0.5in, left=0.5in, right=0.5in}
+\setstretch{1} 
+\title{\textbf{Analysis of Annual Temperature AutoCorrelations Using Permutation Testing}}
+\author{Laiyin Zhou, Yaxin Liu, Sebastian Dohne, and Yangfeng Wang}
+\date{04/12/2024}
+\begin{document}
+
+\maketitle
+\section*{Introduction}
+This study investigates whether there is a significant correlation between consecutive years' annual mean temperatures in Key West. To achieve this, we computed the observed correlation coefficient and used a permutation test to assess its statistical significance.The data consists of annual mean temperatures. The observed correlation coefficient was calculated between the temperatures of year \( t \) and year \( t+1 \). To test the null hypothesis that the observed correlation is due to random chance, a permutation test was conducted. The temperature data was randomly shuffled 10,000 times, and a correlation coefficient was calculated for each permutation. The p-value was estimated as the proportion of permuted correlations greater than or equal to the observed correlation.
+\section*{Results}
+The observed correlation coefficient was: 0.649.
+The approximate p-value from the permutation test was: 0.0006.
+This indicates that the observed correlation is highly statistically significant. Figure \ref{fig:histogram} shows the distribution of permuted correlation coefficients, with the observed correlation marked as a red dashed line.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth, height=0.3\textheight]{../results/Coefficients.pdf}
+    \caption{Histogram of correlation coefficients from 10,000 permutations. The red dashed line represents the observed correlation.}
+    \label{fig:histogram}
+\end{figure}
+\section*{Conclusion}
+The observed correlation coefficient suggests a moderate positive relationship between consecutive years' temperatures in Key West. The extremely low p-value (\(< 0.001\)) strongly rejects the null hypothesis, indicating that the correlation is not due to random chance. This result may reflect underlying climatic patterns or environmental inertia.
+\immediate\write18{mv TAutoCorrLatexCode.pdf ../results/}
+\end{document}
+
+**********************************************************************
+
+Testing TAutoCorrLatexCode.tex...
+
+======================================================================
+Inspecting script file Groupwork_oaks_debugme.py...
+
+File contents are:
+
+**********************************************************************
+#!/usr/bin/env python3
+
+"""
+Description: This script filters species names in a CSV file, identifying those 
+belonging to the Quercus genus (oak trees), and writes them to a new CSV file. 
+It reads from an input file, processes the data, and saves the results to an output file.
+Additionally, it includes a function with built-in tests using doctest.
+
+Author: 'Laiyin Zhou (l.zhou24@imperial.ac.uk), Sebatian Dohne (sebastian.dohne24@imperial.ac.uk), Yanfeng Wang (yanfeng.wang24@imperial.ac.uk), Yaxin Liu (yaxin.liu24@imperial.ac.uk)'
+Version: 0.0.1
+License: License for this code/program
+"""
+
+__appname__ = 'Groupwork_oaks_debugme'
+__author__ = 'Laiyin Zhou (l.zhou24@imperial.ac.uk), Sebatian Dohne (sebastian.dohne24@imperial.ac.uk), Yanfeng Wang (yanfeng.wang24@imperial.ac.uk), Yaxin Liu (yaxin.liu24@imperial.ac.uk)'
+__version__ = '0.0.1'
+
+
+import csv
+import sys
+import os
+
+# Ensure the output directory exists, creating it if necessary
+results_dir = '../results'
+try:
+    os.makedirs(results_dir, exist_ok=True)
+except OSError as e:
+    print(f"Error creating directory '{results_dir}': {e}")
+    exit(1)  # Exit with an error code if directory creation fails
+
+
+def is_an_oak(name):
+    """ 
+    Returns True if the name starts with 'quercus or Quercus'  
+
+    Examples:
+    >>> is_an_oak('Fagus sylvatica') 
+    False
+
+    >>> is_an_oak('Quercus sylvatica')
+    True
+
+    >>> is_an_oak('Quercuss sylvatica') 
+    False
+    """
+    return name.split()[0] in ('quercus', 'Quercus') 
+
+#print(str(is_an_oak('Quercuss sylvatica')) + " test complete" + '\n')
+#gives false
+
+    
+def main(argv): 
+    """
+    Filters oak species from a CSV file and writes them to a new CSV file with specified column headers.
+
+    This function reads data from an input CSV file (`TestOaksData.csv`) containing a list of plant species. 
+    It filters rows to identify only oak species (using the `is_an_oak` function) and writes the filtered 
+    data to an output CSV file (`JustOaksData.csv`). The output file includes "Genus" and "Species" as 
+    column headers.
+
+    Args:
+        argv (list): A list of command-line arguments (not used in this function but often required 
+                     for main functions).
+
+    Returns:
+        int: Always returns 0, indicating successful completion.
+    """
+
+    # Open the input and output files
+    with open('../data/TestOaksData.csv', 'r') as f, open('../results/JustOaksData.csv', 'w', newline='') as g:
+        taxa = csv.reader(f)
+        csvwrite = csv.writer(g)
+        oaks = set()
+        
+        # Write column headers for the output CSV
+        csvwrite.writerow(["Genus", "Species"])
+        next(taxa)  # Skip the 'Genus' and 'Species' headers in the input file
+
+        # Iterate through rows in the input CSV
+        for row in taxa:
+            print(row)
+            print("The genus is:") 
+            print(row[0] + '\n')
+            if is_an_oak(row[0]):
+                print('FOUND AN OAK!\n')
+                csvwrite.writerow([row[0], row[1]])
+
+    print("Oak names have been written to", '../results/JustOaksData.csv')
+    
+    return 0
+
+    
+if (__name__ == "__main__"):
+    status = main(sys.argv)
+**********************************************************************
+
+Testing Groupwork_oaks_debugme.py...
+
+Groupwork_oaks_debugme.py is a Python script file;
+
+checking for docstrings...
+
+Found one or more docstrings and functions
+
+Output (only first 500 characters): 
+
+
+**********************************************************************
+['Quercus', ' robur']
+The genus is:
+Quercus
+
+FOUND AN OAK!
+
+['Fraxinus', ' excelsior']
+The genus is:
+Fraxinus
+
+['Pinus', ' sylvestris']
+The genus is:
+Pinus
+
+['Quercus', ' cerris']
+The genus is:
+Quercus
+
+FOUND AN OAK!
+
+['Quercus', ' petraea']
+The genus is:
+Quercus
+
+FOUND AN OAK!
+
+Oak names have been written to ../results/JustOaksData.csv
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.02160s
+
+======================================================================
+======================================================================
+Finished running scripts
+
+Ran into 1 errors
+
+======================================================================
+======================================================================
+Finally, checking git log:
+
+commit 9e795da241da85f329fac1d1f47c129e25f76da1
+Author: Sebastian Dohne <sed24@ic.ac.uk>
+Date:   Thu Dec 5 11:10:23 2024 +0000
+
+    edits made to final push
+
+commit bf8ce1cfe8d80ea98c74a66bde6ecbdad2924e0e
+Author: yaxin-liu24 <yaxin.liu24@imperial.ac.uk>
+Date:   Thu Dec 5 00:49:21 2024 +0000
+
+    final version
+
+commit cf5906fd0ab13674f42ee8ca039a290bc396820f
+Author: yaxin-liu24 <yaxin.liu24@imperial.ac.uk>
+Date:   Thu Dec 5 00:46:07 2024 +0000
+
+    final version
+
+commit 9cd7d4689391fa26b64948ed536a4252e6000961
+Author: yaxin-liu24 <yaxin.liu24@imperial.ac.uk>
+Date:   Thu Dec 5 00:33:30 2024 +0000
+
+    final version
+
+commit 5fef9cc89b1e1db157fefcec28309a198bb43c03
+Author: yaxin-liu24 <yaxin.liu24@imperial.ac.uk>
+Date:   Fri Oct 25 12:05:48 2024 +0100
+
+    Rename align_seqs_better 2.py to align_seqs_better.py
+
+commit 75555e364f63fce8f737eb23d683697317beec7c
+Author: yaxin-liu24 <yaxin.liu24@imperial.ac.uk>
+Date:   Fri Oct 25 12:01:11 2024 +0100
+
+    final version
+
+commit faadd866982f2c0c4fe519b9486c3006e73ac42d
+Merge: 9f5de2f fdff305
+Author: yaxin-liu24 <yaxin.liu24@imperial.ac.uk>
+Date:   Fri Oct 25 11:18:56 2024 +0100
+
+    merge yaxin's branch into main
+
+commit fdff305e65681d584fad94683cdc8e21f0a1ce04
+Author: yaxin-liu24 <yaxin.liu24@imperial.ac.uk>
+Date:   Fri Oct 25 11:15:31 2024 +0100
+
+    edit on gitignore
+
+commit 3fb50ddd9d85fcb6ec0a31ee41e5496448bd51a2
+Author: yaxin-liu24 <yaxin.liu24@imperial.ac.uk>
+Date:   Fri Oct 25 11:11:08 2024 +0100
+
+    final version
+
+commit 9f5de2fce1c1af692ff10b3f7a72e6c2be27ad77
+Author: yaxin-liu24 <yaxin.liu24@imperial.ac.uk>
+Date:   Thu Oct 24 14:53:08 2024 +0100
+
+    readding fasta align seq python scripts
+
+commit 7fb5bbfceeba5d5dcb4f12753e320e7ed2637a89
+Author: yaxin-liu24 <yaxin.liu24@imperial.ac.uk>
+Date:   Thu Oct 24 14:49:10 2024 +0100
+
+    adding missing oaks
+
+commit a273e625b47dff8b6d090c78b43d7c8af6cfa13a
+Author: yaxin-liu24 <yaxin.liu24@imperial.ac.uk>
+Date:   Thu Oct 24 14:43:54 2024 +0100
+
+    adding missing oaks group practical
+
+commit 02c37be103b47dfc4d99fd511f35b833c1b8e4ae
+Author: yaxin-liu24 <yaxin.liu24@imperial.ac.uk>
+Date:   Thu Oct 24 14:37:36 2024 +0100
+
+    new changes
+
+commit b34b313aa5fc0bd1bb0e6703789f5fd8aa945e4b
+Author: yaxin-liu24 <yaxin.liu24@imperial.ac.uk>
+Date:   Thu Oct 24 14:30:46 2024 +0100
+
+    oaks problem
+
+commit bef04b4f051604b7dfa4358b61ce5532ea99f85a
+Author: Yanfeng-Wang-0 <yw4524@ic.ac.uk>
+Date:   Thu Oct 24 14:24:40 2024 +0100
+
+    Delete code/modified_missingoaksproblem.py
+
+commit 62c5f6deaca2524f156d63aa75d7bc51cd117b42
+Author: airbreather2 <sed24@ic.ac.uk>
+Date:   Thu Oct 24 11:57:03 2024 +0100
+
+    Update README.md
+
+commit 8d6025152cf8df9dea214532c5e8faefc0f5a285
+Author: Yanfeng-Wang-0 <yw4524@ic.ac.uk>
+Date:   Thu Oct 24 11:46:22 2024 +0100
+
+    Add files via upload
+
+commit 223b08bbcbd8bc30dca90a9091443348c38064b3
+Author: airbreather2 <sed24@ic.ac.uk>
+Date:   Thu Oct 24 11:45:45 2024 +0100
+
+    Create README.md
+
+commit 2bf8b14c513508139a537056407d27441a09d3ee
+Author: Laiyin Zhou <l.zhou24@imperial.ac.uk>
+Date:   Thu Oct 24 11:31:14 2024 +0100
+
+    add .gitignore
+
+commit 424e4d98d33ba5f54c637a82cbe90399f1231bd7
+Author: yaxin-liu24 <yaxin.liu24@imperial.ac.uk>
+Date:   Thu Oct 24 11:23:18 2024 +0100
+
+    yaxin's work
+
+commit 23c900bd233d3466584be14302b5f6e7e8e97038
+Author: Laiyin Zhou <l.zhou24@imperial.ac.uk>
+Date:   Thu Oct 24 10:13:35 2024 +0100
+
+    Laiyin's DNA practical
+
+FINISHED LOGGING
+
